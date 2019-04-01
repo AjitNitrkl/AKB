@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: ews-listener
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ajitbehera
+Implementation-Vendor-Id: com.akb.listener
+Build-Jdk: 1.8.0_25
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/core-dependencies/listener-dependencies/ews-listene
+ r
+Created-By: Maven Integration for Eclipse
+Main-Class: pnc.aop.core.comp.service.PNCApplication
+

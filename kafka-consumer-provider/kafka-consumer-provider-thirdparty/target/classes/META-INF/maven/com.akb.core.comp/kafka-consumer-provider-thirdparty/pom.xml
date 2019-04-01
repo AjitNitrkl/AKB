@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+   <groupId>com.akb.core.comp</groupId>
+  <artifactId>kafka-consumer-provider-thirdparty</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>kafka-consumer-provider-thirdparty</name>
+  
+  <parent>
+    <groupId>com.akb.core.comp</groupId>
+    <artifactId>kafka-consumer-provider</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <dependencies>
+  <dependency>
+ <groupId>com.akb.core.comp</groupId>
+  <artifactId>kafka-consumer-provider-base</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+  <dependency>
+  <groupId>com.akb.dao</groupId>
+  <artifactId>dao-application-provider-entity</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+  
+  
+  </dependencies>
+ 
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+ 
+</project>

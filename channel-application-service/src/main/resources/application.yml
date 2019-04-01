@@ -1,0 +1,12 @@
+com.akb.dao.application:
+  connectionString: mongodb://localhost:27017/aop
+  
+com.akb.dao.application.event:
+  connectionString: mongodb://localhost:27017/aop
+  
+com.akb.core.comp.kafka:
+  servers: 127.0.0.1:9092
+  topics:
+    applicationlog: pnc-aop-applicationlog
+    dms: pnc-aop-dms
+    thirdpartycall: pnc-aop-thirdpartycall

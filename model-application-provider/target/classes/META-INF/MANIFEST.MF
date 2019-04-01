@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: model-application-provider
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ajitbehera
+Implementation-Vendor-Id: com.akb.model
+Build-Jdk: 1.8.0_25
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/core-dependencies/component-dependencies/model-appl
+ ication-provider
+Created-By: Maven Integration for Eclipse
+

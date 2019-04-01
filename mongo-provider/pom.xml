@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+   <groupId>com.akb.core</groupId>
+  <artifactId>mongo-provider</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <parent>
+    <groupId>com.akb.core.component</groupId>
+    <artifactId>component-dependencies</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  
+  <properties>
+		<dao-application-provider-entity.version>0.0.1-SNAPSHOT</dao-application-provider-entity.version>
+		 <docker-maven-plugin.version>0.24.0</docker-maven-plugin.version>
+		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+		<build.number>0</build.number>
+		<docker.name>mongo-provider</docker.name>
+		<docker.tag>${project.version}-${build.number}</docker.tag>
+	</properties>
+  
+  <dependencies>
+  
+  <dependency>
+  <groupId>org.springframework.data</groupId>
+  <artifactId>spring-data-mongodb</artifactId>
+  </dependency>
+  </dependencies>
+ 
+  <build>
+		<plugins>
+			<!-- <plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>${docker-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+						<configuration>
+
+							<images>
+								<image>
+									<name>${docker.name}</name>
+									<alias>${docker.name}</alias>
+									<build>
+										<compression>gzip</compression>
+										<from>openjdk:8u151-alpine3.7</from>
+									
+										<volumes>
+											<volume>/tmp</volume>
+										</volumes>
+										<entryPoint>["java","-jar", "/service/service.jar"]</entryPoint>
+										<entryPoint>java -Djava.security.egd=file:/dev/./urandom
+											$JAVA_OPTS -jar /service/service.jar</entryPoint>
+										
+										<tags>${docker.tag}</tags>
+									</build>
+								</image>
+							</images>
+						</configuration>
+						</execution>
+						<execution>
+						<id>docker-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+						<goal>push</goal></goals>
+
+						<configuration>
+							<images>
+								<image>
+									<name>${docker.name}</name>
+									<alias>${docker.name}</alias>
+									<build>
+										<tags>${docker.tag}</tags>
+									</build>
+								</image>
+							</images>
+						</configuration>
+
+					</execution>
+				</executions>
+
+			</plugin> -->
+		</plugins>
+
+	</build>
+ 
+</project>

@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.akb.service</groupId>
+  <artifactId>channel-application-service</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  
+  <parent>
+    <groupId>com.akb.service.dependencies</groupId>
+    <artifactId>service-dependencies</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <properties>
+  <model-application-provider.version>0.0.1.SNAPSHOT</model-application-provider.version>
+  <dao-application-provider-repository.version>0.0.1.SNAPSHOT</dao-application-provider-repository.version>
+   <dao-application-provider.version>0.0.1.SNAPSHOT</dao-application-provider.version>
+    <dao-application-provider.version>0.0.1.SNAPSHOT</dao-application-provider.version>
+   <docker-maven-plugin.version>0.24.0</docker-maven-plugin.version>
+		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+		<build.number>0</build.number>
+
+		<docker.name>channel-application-service-image</docker.name>
+		<docker.tag>${project.version}-${build.number}</docker.tag>
+  </properties>
+
+  
+  <dependencies>
+   
+  <dependency>
+  <groupId>com.akb.model</groupId>
+  <artifactId>model-application-provider</artifactId>
+  <version>${model-application-provider.version}</version>
+  </dependency>
+  
+<!--   <dependency>
+  <groupId>com.akb.dao</groupId>
+  <artifactId>dao-application-provider-entity</artifactId>
+  <version>${dao-application-provider.version}</version>
+  </dependency> -->
+  
+    <dependency>
+  <groupId>com.akb.dao</groupId>
+  <artifactId>dao-application-provider-repository</artifactId>
+  <version>${dao-application-provider-repository.version}</version>
+  </dependency>
+  
+  <!--  <dependency>
+  <groupId>com.akb.dao</groupId>
+  <artifactId>dao-application-provider</artifactId>
+  <version>${dao-application-provider.version}</version>
+  </dependency> -->
+ 
+
+    <dependency>
+  <groupId>com.akb.core.comp</groupId>
+  <artifactId>kafka-producer-provider</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+   </dependency> 
+   
+      <dependency>
+        <groupId>org.springframework.integration</groupId>
+        <artifactId>spring-integration-kafka</artifactId>
+        <version>2.3.0.RELEASE</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.kafka</groupId>
+        <artifactId>spring-kafka</artifactId>
+    </dependency>
+    
+  
+  
+  </dependencies>
+  <!--  <build>
+  
+  <plugins>
+   <plugin>
+		  <groupId>io.repaint.maven</groupId>
+		  <artifactId>tiles-maven-plugin</artifactId>
+		  </plugin>
+  </plugins>
+  </build> -->
+ 
+  
+  
+  
+  <!--  <build>
+		<plugins>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>${docker-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+						<configuration>
+
+							<images>
+								<image>
+									<name>${docker.name}</name>
+									<alias>${docker.name}</alias>
+									<build>
+										<compression>gzip</compression>
+										<from>openjdk:8u151-alpine3.7</from>
+									
+										<volumes>
+											<volume>/tmp</volume>
+										</volumes>
+										<entryPoint>["java","-jar", "/service/service.jar"]</entryPoint>
+										<entryPoint>java -Djava.security.egd=file:/dev/./urandom
+											$JAVA_OPTS -jar /service/service.jar</entryPoint>
+										
+										<tags>${docker.tag}</tags>
+									</build>
+								</image>
+							</images>
+						</configuration>
+						</execution>
+						<execution>
+						<id>docker-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+						<goal>push</goal></goals>
+
+						<configuration>
+							<images>
+								<image>
+									<name>${docker.name}</name>
+									<alias>${docker.name}</alias>
+									<build>
+										<tags>${docker.tag}</tags>
+									</build>
+								</image>
+							</images>
+						</configuration>
+
+					</execution>
+				</executions>
+
+			</plugin>
+		</plugins>
+
+	</build> -->
+  
+</project>

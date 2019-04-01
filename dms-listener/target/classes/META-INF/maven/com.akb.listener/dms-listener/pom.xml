@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.akb.core.listener</groupId>
+    <artifactId>listener-dependencies</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.akb.listener</groupId>
+  <artifactId>dms-listener</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+  <dependency>
+ <groupId>com.akb.core.comp</groupId>
+  <artifactId>kafka-consumer-provider-base</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+  <dependency>
+  <groupId>com.akb.core</groupId>
+  <artifactId>kafka-model</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+  
+  <dependency>
+  <groupId>com.akb.core.comp</groupId>
+  <artifactId>api-domain</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
+  
+  <dependency>
+ <groupId>org.kie</groupId>
+  <artifactId>kie-ci</artifactId>
+  </dependency>
+  
+  <dependency>
+ <groupId>org.drools</groupId>
+  <artifactId>drools-decisiontables</artifactId>
+  </dependency>
+  
+  <dependency>
+ <groupId>org.drools</groupId>
+  <artifactId>drools-core</artifactId>
+  </dependency>
+  
+  <dependency>
+ <groupId>org.drools</groupId>
+  <artifactId>drools-compiler</artifactId>
+  </dependency>
+  
+  </dependencies>
+</project>

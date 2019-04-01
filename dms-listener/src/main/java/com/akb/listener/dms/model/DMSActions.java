@@ -1,0 +1,10 @@
+package com.akb.listener.dms.model;
+
+public enum DMSActions {
+
+	SET_STATUS_APPROVED,
+	SET_STATUS_DECLINED,
+	SET_STATUS_INREVIEW,
+	UPDATE_DMS_APPROVED,
+	SET_NON_STD_RESPONSE
+}

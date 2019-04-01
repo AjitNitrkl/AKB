@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.akb.service.dependencies</groupId>
+	<artifactId>service-dependencies</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>com.akb.core.dependencies</groupId>
+		<artifactId>core-dependencies</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<properties>
+	<start-class>com.akb.core.component.service.PNCApplication</start-class>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.akb.core.comp</groupId>
+			<artifactId>core-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<extensions>false</extensions>
+				</plugin>
+
+				<plugin>
+					<groupId>io.repaint.maven</groupId>
+					<artifactId>tiles-maven-plugin</artifactId>
+					<version>${tiles-maven-plugin.version}</version>
+					<extensions>false</extensions>
+					<configuration>
+						<tiles>
+							<tile>
+							pnc.aop.core.tile:tile-docker-image:0.0.1.SNAPSHOT
+							</tile>
+						</tiles>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

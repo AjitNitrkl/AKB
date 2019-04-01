@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: api-domain
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ajitbehera
+Implementation-Vendor-Id: com.akb.core.comp
+Build-Jdk: 1.8.0_25
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/core-dependencies/component-dependencies/api-domain
+Created-By: Maven Integration for Eclipse
+
