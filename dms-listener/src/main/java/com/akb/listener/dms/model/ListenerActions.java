@@ -8,8 +8,6 @@ public enum ListenerActions {
 	 VALIDATION_EMAIL(KafkaTopic.VALIDATION_EMAIL),
 	 PENDING_APPROVE(KafkaTopic.PENDING_APPROVE),
 	 EWS(KafkaTopic.EWS);
-	
-		
 
 	private KafkaTopic topicName;
 	

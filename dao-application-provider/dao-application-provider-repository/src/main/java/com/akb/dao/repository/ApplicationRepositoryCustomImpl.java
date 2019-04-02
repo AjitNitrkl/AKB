@@ -1,4 +1,4 @@
-package com.akb.dao.repository.impl;
+package com.akb.dao.repository;
 
 import java.util.List;
 
@@ -11,7 +11,6 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import com.akb.dao.entity.Application;
-import com.akb.dao.repository.ApplicationRepositoryCustom;
 
 @Component
 public class ApplicationRepositoryCustomImpl implements ApplicationRepositoryCustom {
