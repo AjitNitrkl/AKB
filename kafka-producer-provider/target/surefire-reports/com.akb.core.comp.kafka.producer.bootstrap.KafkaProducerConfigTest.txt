@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.akb.core.comp.kafka.producer.bootstrap.KafkaProducerConfigTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.691 s <<< FAILURE! - in com.akb.core.comp.kafka.producer.bootstrap.KafkaProducerConfigTest
+initializationError(com.akb.core.comp.kafka.producer.bootstrap.KafkaProducerConfigTest)  Time elapsed: 0.009 s  <<< ERROR!
+java.lang.Exception: No runnable methods
+

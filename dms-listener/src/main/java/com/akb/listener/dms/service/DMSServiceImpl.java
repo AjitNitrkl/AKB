@@ -10,9 +10,11 @@ import org.kie.api.command.Command;
 import org.kie.api.runtime.StatelessKieSession;
 import org.kie.internal.command.CommandFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.akb.api.common.enums.Product;
+import com.akb.core.comp.kafka.service.KafkaProducerService;
+import com.akb.core.kafka.domain.AKBKafkaMessage;
 import com.akb.core.kafka.domain.application.ApplicationInfo;
 import com.akb.core.kafka.properties.KafkaProperties;
 import com.akb.dao.entity.Application;
@@ -21,24 +23,26 @@ import com.akb.listener.dms.config.DroolsBeanFactory;
 import com.akb.listener.dms.model.Actions;
 import com.akb.listener.dms.model.DMSActions;
 import com.akb.listener.dms.model.ListenerActions;
-
-import lombok.RequiredArgsConstructor;
+import com.akb.dao.repository.ApplicationRepository;
 import lombok.extern.slf4j.Slf4j;
-import pnc.aop.core.comp.kafka.domain.PNCKafkaMessage;
-import pnc.aop.core.comp.kafka.producer.service.KafkaProducerService;
-
-@Service
+@Component
 @Slf4j
-@RequiredArgsConstructor(onConstructor = @__({@Autowired}))
+//@RequiredArgsConstructor(onConstructor = @__({@Autowired}))
 public class DMSServiceImpl implements DMSService {
 	
-	private final Map<Product, StatelessKieSession> kieSessions;
-	private final KafkaProperties kafkaProperties;
-	private final KafkaProducerService kafkaProducerService;
+	 Map<Product, StatelessKieSession> kieSessions;
+	 KafkaProperties kafkaProperties;
+	 KafkaProducerService kafkaProducerService;
+	 @Autowired
+	 ApplicationRepository applicationRepository;
 	
-//	DMSServiceImpl(DroolsBeanFactory droolsBeanFactory){
-//		this.kieSessions = buildKieSessions(droolsBeanFactory);
-//	}
+	@Autowired
+	DMSServiceImpl(DroolsBeanFactory droolsBeanFactory, KafkaProperties kafkaProperties,
+			KafkaProducerService kafkaProducerService){
+		this.kieSessions = buildKieSessions(droolsBeanFactory);
+		this.kafkaProperties = kafkaProperties;
+		this.kafkaProducerService = kafkaProducerService;
+	}
 
 	private Map<Product, StatelessKieSession> buildKieSessions(DroolsBeanFactory droolsBeanFactory) {
 		EnumMap<Product, StatelessKieSession> sessions = new EnumMap<>(Product.class);
@@ -50,10 +54,11 @@ public class DMSServiceImpl implements DMSService {
 	@Override
 	public void executeRules(String appId) {
 
-		Application application = Application.builder().id("123").build();
+		Application application = applicationRepository.findById(appId).get();
+				//Application.builder().id(appId).build();
 		if(application != null) {
 			List<ApplicationEvent> events =  null;
-					//ApplicationEvent.builder().id("123").build();
+					//ApplicationEvent.builder().id("A47ZX5EX8A").build();
 			Actions actions = getActions(application,events);
 			executeDMSAction(application,actions.getDmsAction());
 			executeListenerAction(application, actions.getListenerAction());
@@ -64,14 +69,10 @@ public class DMSServiceImpl implements DMSService {
 
 	private void executeListenerAction(Application application, 
 			List<ListenerActions> listenerAction) {
-		listenerAction.stream().map(action ->
-		PNCKafkaMessage.builder().payload(ApplicationInfo.builder()
-											.applicationId(application.getId())
-											.build())
-								  .topicName(kafkaProperties.getTopic(action.getTopicName()))
-								  .build()).forEach(kafkaProducerService::sendMessage);
-								
-									
+		listenerAction.stream().map(action-> AKBKafkaMessage.builder()
+										.payLoad(ApplicationInfo.builder()
+										.applicationId(application.getId()).build()
+										));
 	}
 
 	private void executeDMSAction(Application application, List<DMSActions> dmsAction) {
@@ -118,16 +119,17 @@ public class DMSServiceImpl implements DMSService {
 
 	private List<Command<?>> buildCommands(Application application, List<ApplicationEvent> events,
 			Actions actions) {
-		events.forEach(k->System.out.println("Events to be exec"+k.getEventType()));
+	//	events.forEach(k->System.out.println("Events to be exec"+k.getEventType()));
 		List<Command<?>> cmds = new ArrayList<>();
 		cmds.add(CommandFactory.newInsert(application));
 		cmds.add(CommandFactory.newInsert(events));
-		cmds.add(CommandFactory.newSetGlobal("actions", actions));
+		//cmds.add(CommandFactory.newSetGlobal("actions", actions));
 		return cmds;
 	}
 
 	private Optional<StatelessKieSession> getKieSession(Application application) {
-		return Optional.ofNullable(kieSessions.get(application.getProduct()));
+		return Optional.ofNullable(kieSessions.get(Product.valueOf(application.getProduct())));
+		
 	}
 
 	

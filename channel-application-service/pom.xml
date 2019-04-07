@@ -39,6 +39,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <artifactId>dao-application-provider-entity</artifactId>
   <version>${dao-application-provider.version}</version>
   </dependency> -->
+  <dependency>
+  <groupId>com.akb.listener</groupId>
+  <artifactId>dms-listener</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
   
     <dependency>
   <groupId>com.akb.dao</groupId>

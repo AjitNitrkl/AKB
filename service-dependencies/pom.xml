@@ -40,7 +40,7 @@
 					<configuration>
 						<tiles>
 							<tile>
-							pnc.aop.core.tile:tile-docker-image:0.0.1.SNAPSHOT
+							com.akb.core.tile:tile-docker-image:0.0.1.SNAPSHOT
 							</tile>
 						</tiles>
 					</configuration>

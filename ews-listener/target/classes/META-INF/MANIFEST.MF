@@ -8,5 +8,5 @@ Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/core-dependencies/listener-dependencies/ews-listene
  r
 Created-By: Maven Integration for Eclipse
-Main-Class: pnc.aop.core.comp.service.PNCApplication
+Main-Class: com.akb.core.comp.service.PNCApplication
 

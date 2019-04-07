@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Deserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,8 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import com.akb.core.kafka.properties.KafkaProperties;
-import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
+//import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
+
 
 @Configuration
 @EnableAsync
@@ -33,10 +34,11 @@ public class KafkaConsumerConfig
 	  Map<String, Object> props = new HashMap<>();
 	  props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,"127.0.0.1:9092");
 			  //kafkaProperties.getServers());
-	  props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getGroupId());
+	  props.put(ConsumerConfig.GROUP_ID_CONFIG,"dms");
+			  //kafkaProperties.getGroupId());
 	  props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
-	  props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
-	  props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+	  props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+	  props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 	  
 	  JsonDeserializer<Object> jsonDeserializer = new JsonDeserializer<>();
 	  jsonDeserializer.addTrustedPackages("*");

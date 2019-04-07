@@ -25,8 +25,7 @@ public class KafkaProducerConfig
   public KafkaTemplate<String, Object> kafkaTemplate()
   {
 	  Map<String, Object> props = new HashMap<>();
-	  props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"127.0.0.1:9092");
-			  //kafkaProperties.getServers());
+	  props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaProperties.getServers());
 	  props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 	  props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 	  

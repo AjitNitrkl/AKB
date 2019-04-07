@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class AbstractKafkaListener<T> {
 	
+	//${kafka.topicName}
 	@KafkaListener(topics = "${kafka.topicName}", containerFactory = "kafkaListenerContainerFactory")
 	public void listen(@Payload T message, @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String messageKey,
 			Acknowledgment ack) {

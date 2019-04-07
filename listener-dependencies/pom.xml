@@ -11,17 +11,17 @@
   <packaging>pom</packaging>
   
   <properties>
-	<start-class>pnc.aop.core.comp.service.PNCApplication</start-class>
+	<start-class>com.akb.core.comp.service.PNCApplication</start-class>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>pnc.aop.core.comp</groupId>
-			<artifactId>core-services</artifactId>
+			<groupId>com.akb.core.comp</groupId>
+			<artifactId>core-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-		 <groupId>pnc.aop.core.comp</groupId>
+		 <groupId>com.akb.core.comp</groupId>
   <artifactId>kafka-producer-provider</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   </dependency>

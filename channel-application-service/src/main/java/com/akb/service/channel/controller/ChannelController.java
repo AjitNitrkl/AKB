@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.akb.listener.dms.service.DMSService;
 import com.akb.model.application.common.ApplicationRequest;
 import com.akb.model.application.common.ApplicationResponse;
 import com.akb.service.channel.manager.ChannelManager;
@@ -27,9 +28,12 @@ import lombok.RequiredArgsConstructor;
 public class ChannelController {
 
 	private final ChannelManager channelManager;
+	private final DMSService dmsService;
 	
 	@PostMapping("/applications")
 	public CompletableFuture<ApplicationResponse> postApplication(@Valid @RequestBody ApplicationRequest req){
+		//dmsService.executeRules("A47ZX5EX8A");
+		//return null;
 		return supplyAsync((()->channelManager.saveApplication(req)));
 	}
 }

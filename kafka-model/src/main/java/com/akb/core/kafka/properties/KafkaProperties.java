@@ -21,7 +21,6 @@ public class KafkaProperties {
 	  private Map<String, String> topics;
 	  
 	  public String getTopic(KafkaTopic topicName) {
-		  return "dms";
-				  //topics.get(topicName.getName());
+		  return topics.get(topicName.getName());
 	  }
 }

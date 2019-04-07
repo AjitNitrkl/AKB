@@ -12,7 +12,7 @@ public class ApplicationMapper {
 		return Application.builder()
 				.id(createRandomId())
 				.status("PENDING")
-				.product("HYS")
+				.product("T1")
 				.applicantList(ApplicantMapper.toEntity(req.getApplicants())).build();
 	}
 	

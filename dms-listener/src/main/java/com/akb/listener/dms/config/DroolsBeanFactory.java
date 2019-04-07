@@ -19,8 +19,8 @@ import com.akb.api.common.enums.Product;
 public class DroolsBeanFactory {
 
 	private static final String RULE_PATH = "rules";
-	private static final String RULES_FILE_SUFFIX = "ApplicationValidation_";
-	private static final String RULES_FILE_PREFIX = "drl";
+	private static final String RULES_FILE_SUFFIX = "drl";
+	private static final String RULES_FILE_PREFIX = "ApplicationValidation_";
 	private KieServices kieServices = KieServices.Factory.get();
 	
 	private void getKieRepository() {
@@ -32,7 +32,7 @@ public class DroolsBeanFactory {
 		getKieRepository();
 		KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
 		String fileRules = RULE_PATH+File.separator + RULES_FILE_PREFIX 
-				+"productname"+RULES_FILE_SUFFIX;
+				+"T1."+RULES_FILE_SUFFIX;
 		kieFileSystem.write(ResourceFactory.newClassPathResource(fileRules));
 		KieBuilder kb = kieServices.newKieBuilder(kieFileSystem);
 		kb.buildAll();

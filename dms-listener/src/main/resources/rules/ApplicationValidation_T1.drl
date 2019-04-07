@@ -1,35 +1,13 @@
 package com.akb.listener.dms;
 
-import com.akb.listener.dms.model.ListenerActions;
-import com.akb.listener.dms.model.DMSAction;
 import com.akb.dao.entity.Application;
 import com.akb.dao.entity.ApplicationEvent;
+import java.time.LocalDate;
 
-global com.akb.listener.dms.model.Actions actions;
-
-dialect "mvel"
-
-rule "app pending"
- 	when 
- 		Application(status != APPROVED, status == PENDING)
- 	then
- 		actions.addListenerAction(ListenerActions.VALIDATION_EMAIL);
-end
-
-rule "app pending, after email validation"
- 	when 
- 		Application(status != APPROVED, status == PENDING)
- 		exists (ApplicationEvent(eventType == EMAIL, result == APPROVED)
- 	then
- 		actions.addListenerAction(ListenerActions.EWS);
-end
-
-rule "app pending, after ews validation"
- 	when 
- 		Application(status != APPROVED, status == PENDING)
- 		exists (ApplicationEvent(eventType == EWS, result == APPROVED)
- 	then
- 		actions.addListenerAction(ListenerActions.PENDING_APPROVE);
-end
-
- 			
+rule "Application Pending"
+  dialect "mvel"
+  when
+	Application(status =="PENDING" )
+  then
+	System.out.println("This Application is PENDING");
+end	

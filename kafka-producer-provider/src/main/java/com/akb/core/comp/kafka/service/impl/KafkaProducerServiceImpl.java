@@ -41,7 +41,6 @@ public class KafkaProducerServiceImpl implements KafkaProducerService
   
   public void sendDMSMessage(ApplicationInfo applicationInfo)
   {
-    applicationInfo.setApplicationId("111");
     sendMessage(AKBKafkaMessage.builder().payLoad(applicationInfo)
       .topicName(this.kafkaProperties.getTopic(KafkaTopic.DMS_LISTENER)).build());
   }
