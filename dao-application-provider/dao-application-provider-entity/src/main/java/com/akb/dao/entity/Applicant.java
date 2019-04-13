@@ -16,6 +16,8 @@ public class Applicant {
 	  private String lname;
 	  private Date dob;
 	  private String ssn;
+	  private String email;
+	  private boolean isPrimary;
 	  private List<Address> addressList;
 
 }

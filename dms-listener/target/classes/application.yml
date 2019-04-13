@@ -6,9 +6,14 @@ com.akb.dao.application.event:
   
 com.akb.core.kafka:
   servers: 127.0.0.1:9092
+  groupId: 1
   topics:
-    applicationlog: pnc-aop-applicationlog
+    applicationlog: applicationlog
     dms: dms
-    thirdpartycall: pnc-aop-thirdpartycall
+    thirdpartycall: thirdpartycall
+    ews: ews
+    email: email
     
 kafka.topicName: dms
+
+application-dao-service-url: http://localhost:3000/applications

@@ -1,6 +1,6 @@
 package com.akb.dao.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -25,12 +25,12 @@ public class ApplicationEvent {
 	
 	private String applicationId;
 	
-	private String eventType;
-	
-	private Date createdAt;
+	private LocalDateTime createdAt;
 	
 	private List<String> thirdPartyCalls;
 	
 	private ResultEvent result;
+	
+	private EventType eventType;
 
 }

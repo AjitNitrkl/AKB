@@ -8,4 +8,24 @@
   <groupId>com.akb.listener</groupId>
   <artifactId>email-listener</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+<!--   <dependency>
+<groupId>com.akb.dao</groupId>
+  <artifactId>dao-application-provider-repository</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency> -->
+
+<dependency>
+<groupId>com.akb.dao</groupId>
+  <artifactId>dao-application-event-provider-repository</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+<dependency>
+   <groupId>com.akb.core.comp</groupId>
+  <artifactId>kafka-consumer-provider-thirdparty</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+
+  </dependencies>
 </project>

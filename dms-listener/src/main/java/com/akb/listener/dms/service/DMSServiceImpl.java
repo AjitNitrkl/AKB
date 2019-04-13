@@ -69,10 +69,19 @@ public class DMSServiceImpl implements DMSService {
 
 	private void executeListenerAction(Application application, 
 			List<ListenerActions> listenerAction) {
-		listenerAction.stream().map(action-> AKBKafkaMessage.builder()
-										.payLoad(ApplicationInfo.builder()
-										.applicationId(application.getId()).build()
-										));
+		
+	
+	kafkaProducerService.sendMessage(AKBKafkaMessage.builder().payLoad(ApplicationInfo.builder()
+										.applicationId(application.getId()).build())
+										.topicName("email")
+										.build());
+		
+//		listenerAction.stream().map(action-> AKBKafkaMessage.builder()
+//										.payLoad(ApplicationInfo.builder()
+//										.applicationId(application.getId()).build())
+//										.topicName("email")
+//										.build())
+//										.forEach(kafkaProducerService :: sendMessage);;
 	}
 
 	private void executeDMSAction(Application application, List<DMSActions> dmsAction) {

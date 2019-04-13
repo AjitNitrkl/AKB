@@ -3,6 +3,7 @@
   <groupId>com.akb.comp</groupId>
   <artifactId>application-dao-client</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   
   <parent>
     <groupId>com.akb.core.component</groupId>

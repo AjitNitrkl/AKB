@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+targetNamespace="http://ws.akb.com/ews" 
+xmlns:tns="http://ws.akb.com/ews" elementFormDefault="qualified">
+  
+  <xs:element name="EWSRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name= "EWSRequestDetails" type="tns:EWSRequestDetails"/>
+      </xs:sequence>  
+    </xs:complexType>
+  </xs:element>
+   <xs:complexType name="EWSRequestDetails">
+    <xs:sequence>
+      <xs:element name="fname" type="xs:string"/>
+      <xs:element name="lname" type="xs:string"/>
+      <xs:element name="ssn" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="EWSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name= "EWSREsponse" type="tns:EWSResponseDetails"/>
+      </xs:sequence>  
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="EWSResponseDetails">
+    <xs:sequence>
+      <xs:element name="score" type="xs:int"/>
+      <xs:element name="status" type="tns:status"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+		<xs:simpleType name="status">
+		  <xs:restriction base="xs:string">
+		    <xs:enumeration value="APPROVED"/>
+		    <xs:enumeration value="DECLINED"/>
+		    <xs:enumeration value="PENDING"/>
+		  </xs:restriction>
+		</xs:simpleType>
+		
+		
+
+  
+</xs:schema>

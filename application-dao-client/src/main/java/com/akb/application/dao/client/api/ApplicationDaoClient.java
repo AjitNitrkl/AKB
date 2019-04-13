@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.akb.dao.entity.Application;
 
-@FeignClient(name = "applicationDaoClient", url ="")
+@FeignClient(name = "applicationDaoClient", url ="http://localhost:3000/applications")
+//"${application-dao-service-url}")
 public interface ApplicationDaoClient {
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/{id}")

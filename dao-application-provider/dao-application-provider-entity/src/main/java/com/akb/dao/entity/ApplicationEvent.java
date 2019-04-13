@@ -22,5 +22,6 @@ public class ApplicationEvent {
 	  private String applicationId;
 	  private EventType eventType;
 	  private Date createdAt;
+	  
 
 }
